@@ -1,0 +1,77 @@
+/**
+ * Footer
+ */
+
+.site-footer {
+	background: #B5DEF1;
+	color: $foreground;
+	font-size: $fsize_medium;
+	line-height: $lineheight_default;
+	margin-top: auto; /* sticky footer */
+	padding: rem(95) 0 rem(40);
+	width: 100%;
+
+	@include mediaMaxWidth( md ){
+		padding: rem(50) 0 rem(30);
+	}
+
+	&__text {
+		font-size: clamp(1.5rem, 1.74vw, 1.75rem);
+		line-height: 1;
+
+		@include mediaMaxWidth( md ){
+			font-size: 1.125rem;
+			margin-bottom: rem(40);
+		}
+
+		> * {
+			max-width: rem(600);
+		}
+	}
+	&__widgets {
+		h4, h5, h6 {
+			font-size: 1rem;
+			font-weight: 500;
+		}
+		.wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+			@include mediaBetween( xs,sm ){
+				flex-basis: 0 !important;
+			}
+		}
+	}
+	&__container-bottom {
+		margin-top: rem(80);
+
+		@include mediaMaxWidth( md ){
+			margin-top: rem(50);
+		}
+
+		&::before {
+			background: $foreground;
+			grid-column: content;
+			height: 3px;
+			content: "";
+			display: block;
+			margin: 0 0 rem(20);
+			order: -2;
+			width: 100%;
+		}
+	}
+	&__social-networks {
+		@include mediaMaxWidth( sm ){
+			margin-bottom: rem(20);
+			order: -1;
+		}
+
+		.social-networks-menu {
+			justify-content: center;
+		}
+	}
+	&__copyright {
+		margin-top: rem(20);
+		text-align: right;
+		@include mediaMaxWidth( xs ){
+			text-align: center;
+		}
+	}
+}

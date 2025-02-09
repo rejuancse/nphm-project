@@ -1,0 +1,225 @@
+/**
+ * Block / Highlight cards
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-cards-slider {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 3);
+
+	&__header {
+		margin: 0 0 calc(#{$layout_padding} * 2);
+	}
+	&__heading {
+		font-size: $fsize_h4 !important;
+		margin: 0;
+	}
+	&__arrows {
+		grid-area: arrows;
+		justify-content: flex-end;
+	}
+	&__slide {
+		.highlight-card {
+			height: 100%;
+		}
+	}
+	.splide__arrow {
+		&:disabled {
+			opacity: .5;
+			cursor: not-allowed;
+		}
+	}
+
+	&:not(.splide){
+		#{$b}__link-wrap {
+			margin-top: rem(9);
+
+			@include mediaMinWidth( sm ){
+				text-align: right;
+			}
+			@include mediaMaxWidth( sm ){
+				margin-top: $layout_padding;
+			}
+		}
+		#{$b}__list {
+			gap: calc(#{$layout_padding} * 2) calc(#{$layout_padding} * 2);
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	&.splide {
+		#{$b}__header {
+			display: grid;
+			gap: $layout_padding calc(#{$layout_padding} * 2);
+			grid-template-columns: calc(100% - #{$layout_padding} * 2 - #{rem(70)}) rem(70);
+			grid-template-rows: auto 1fr;
+			grid-template-areas:
+				"heading arrows"
+				"link arrows";
+
+			@include mediaMaxWidth( sm ){
+				grid-template-columns: 1fr;
+				grid-template-areas:
+					"heading"
+					"link";
+			}
+		}
+		#{$b}__heading {
+			grid-area: heading;
+		}
+		#{$b}__link-wrap {
+			grid-area: link;
+
+		}
+	}
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	.splide__track {
+		overflow: initial !important;
+	}
+
+	@media screen and (min-width: 768px) {
+		.block-highlight-cards__slide {
+			width: calc( 36% - 1.6667rem) !important;
+		}
+	}
+
+	@media (min-width: 551px) and (max-width: 767px) {
+		.block-highlight-cards__slide {
+			width: calc( 54% - 1.6667rem) !important;
+		}
+	}
+
+	.splide__pagination {
+		margin-top: 20px !important;
+	}
+
+	.highlight-card__content-wrap {
+		padding: 60px 23px 24px !important;
+
+		@media (min-width: 768px) and (max-width: 1380px) {
+			padding: 30px 15px 20px !important;
+		}
+
+		@media screen and (max-width: 767px) {
+			padding: 30px 23px 24px !important;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 1380px) {
+		.highlight-card__heading {
+			margin: 0 0 10px !important;
+		}
+	}
+
+	.highlight-card__text {
+		margin: 0 0 145px !important;
+
+		@media (min-width: 768px) and (max-width: 1380px) {
+			margin: 0 0 60px !important;
+		}
+
+		@media screen and (max-width: 767px) {
+			margin: 0 0 40px !important;
+		}
+	}
+
+	.splide__list {
+		margin-right: 30px !important;
+	}
+
+	.block-highlight-cards__header {
+		margin: 0 0 30px;
+		display: flex;
+		align-items: center;
+		gap: 50px;
+		justify-content: space-between;
+
+		@media screen and (max-width: 767px) {
+			margin: 0 0 20px !important;
+		}
+	}
+
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+		#{$b}__list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		&.splide {
+			#{$b}__track {
+				overflow: hidden;
+			}
+			#{$b}__list {
+				display: flex;
+				flex-flow: row nowrap;
+				gap: calc(#{$layout_padding} * 2);
+			}
+
+			&[data-perpage="1"] {
+				#{$b}__slide {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
+			}
+			&[data-perpage="2"] {
+				#{$b}__slide {
+					flex: 0 0 calc(100%/2 - #{$layout_padding});
+					max-width: calc(100%/2 - #{$layout_padding});
+				}
+			}
+			&[data-perpage="3"] {
+				#{$b}__slide {
+					flex: 0 0 calc(100%/3 - #{$layout_padding} * 2/3*2);
+					max-width: calc(100%/3 - #{$layout_padding} * 2/3*2);
+				}
+			}
+		}
+	}
+
+	.splide__progress {
+		@media screen and (min-width: 1024px) {
+			margin-top: 57px !important;
+		}
+		@media (min-width: 781px) and (max-width: 1023px) {
+			margin-top: 30px;
+		}
+
+		@media screen and (max-width: 780px) {
+			display: none;
+		}
+	}
+}
+
+.wp-block {
+	.block-cards-slider.splide {
+		ul.block-highlight-cards__list.splide__list {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: normal;
+			-ms-flex-flow: row nowrap;
+			flex-flow: row nowrap;
+			gap: calc(var(--wp--custom--layout--padding)* 2);
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+	}
+}

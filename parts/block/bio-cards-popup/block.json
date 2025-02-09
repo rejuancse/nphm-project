@@ -1,0 +1,30 @@
+{
+	"name": "cs/bio-cards-popup",
+	"title": "Bio cards Popup",
+	"description": "",
+	"category": "nphm-blocks",
+	"icon": "",
+	"style": "block-bio-cards-popup",
+	"script": "",
+	"editorStyle": "",
+	"apiVersion": 2,
+	"keywords": [],
+	"acf": {
+		"mode": "auto",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

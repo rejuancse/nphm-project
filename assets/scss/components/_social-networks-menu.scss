@@ -1,0 +1,57 @@
+/**
+ * Social networks menu
+ */
+
+.social-networks-menu {
+	$c: &;
+
+	display: flex;
+	flex-flow: row wrap;
+	gap: $layout_padding $layout_padding;
+	line-height: 1;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&__icon {
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-size: contain;
+		color: inherit;
+		display: block;
+		height: rem(30);
+		position: relative;
+		width: rem(30);
+
+		&--email {
+			background-image: url('../img/icons/icon-envelope.svg');
+		}
+		&--facebook {
+			background-image: url('../img/icons/icon-facebook.svg');
+		}
+		&--instagram {
+			background-image: url('../img/icons/icon-instagram.svg');
+		}
+		&--linkedin {
+			background-image: url('../img/icons/icon-linkedin.svg');
+		}
+		&--tiktok {
+			background-image: url('../img/icons/icon-tiktok.svg');
+		}
+		&--twitter {
+			background-image: url('../img/icons/icon-twitter.svg');
+		}
+		&--youtube {
+			background-image: url('../img/icons/icon-youtube.svg');
+		}
+			
+		&:hover {
+			@include mediaMinWidth( $mobileBreakpoint ){
+				opacity: 0.7;
+			}
+		}
+		&:focus-visible {
+			box-shadow: $focus_default;
+		}
+	}
+}

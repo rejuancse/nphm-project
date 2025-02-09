@@ -1,0 +1,96 @@
+/**
+ * Variables
+ */
+
+/*** Grid and breakpoints ***/
+$layout_columns:		12;
+$layout_padding:		var(--wp--custom--layout--padding);
+$layout_content:		var(--wp--custom--layout--content);
+$layout_wide:			var(--wp--custom--layout--wide);
+$layout_breakout:		calc((var(--wp--custom--layout--wide) - var(--wp--custom--layout--content)) / 2);
+
+$breakpoints: (
+	xs: 551,
+	sm: 782,
+	md: 1025,
+	lg: 1201,
+	xl: 1366
+);
+$mobileBreakpoint:	'md';
+
+
+/*** Colors ***/
+$foreground:	var(--wp--preset--color--foreground);
+$background:	var(--wp--preset--color--background);
+$red:			var(--wp--preset--color--red);
+$orange:		var(--wp--preset--color--orange);
+$coral:			var(--wp--preset--color--coral);
+$peach:			var(--wp--preset--color--peach);
+$brown:			var(--wp--preset--color--brown);
+$taupe:			var(--wp--preset--color--taupe);
+$beige:			var(--wp--preset--color--beige);
+$plum:			var(--wp--preset--color--plum);
+$pink:			var(--wp--preset--color--pink);
+$light_blue:	var(--wp--preset--color--light-blue);
+$turquoise:		var(--wp--preset--color--turquoise);
+$mint:			var(--wp--preset--color--mint);
+$lemon:			var(--wp--preset--color--lemon);
+$light_yellow:	var(--wp--preset--color--light-yellow);
+
+$dark_gray:		var(--wp--preset--color--dark-gray);
+$medium_gray:	var(--wp--preset--color--medium-gray);
+$light_gray:	var(--wp--preset--color--light-gray);
+
+// Functional colors
+$focus:		#0072C5;
+$success:	#009F53;
+$error:		#E2001B;
+
+
+/*** Typography ***/
+$primary_font:		var(--wp--preset--font-family--gt-america);
+$secondary_font:	var(--wp--preset--font-family--gt-america-condensed);
+
+$lineheight_default: var(--wp--custom--line-height--default);
+
+$fsize_xsmall:		var(--wp--preset--font-size--x-small);
+$fsize_small:		var(--wp--preset--font-size--small);
+$fsize_base:		var(--wp--preset--font-size--base);
+$fsize_medium:		var(--wp--preset--font-size--medium);
+$fsize_large:		var(--wp--preset--font-size--large);
+$fsize_xlarge:		var(--wp--preset--font-size--x-large);
+$fsize_h1:			var(--wp--preset--font-size--heading-1);
+$fsize_h2:			var(--wp--preset--font-size--heading-2);
+$fsize_h3:			var(--wp--preset--font-size--heading-3);
+$fsize_h4:			var(--wp--preset--font-size--heading-4);
+$fsize_h5:			var(--wp--preset--font-size--heading-5);
+$fsize_h6:			var(--wp--preset--font-size--heading-6);
+
+$borderradius_default:	var(--wp--custom--border-radius--default);
+$borderradius_small:	var(--wp--custom--border-radius--small);
+$borderradius_medium:	var(--wp--custom--border-radius--medium);
+$borderradius_large:	var(--wp--custom--border-radius--large);
+
+$margin_default: 1.25rem;
+
+/*** Content ***/
+// Focus
+$focus_default: 0 0 0 2px $foreground, 0 0 2px 2px rgba(0,0,0,.3);
+
+// Header
+$header_height: (
+	default: rem(180),
+	lg: rem(160),
+	$mobileBreakpoint: rem(110),
+	xxs: rem(140)
+);
+$header_logoWidth: (
+	default: rem(236),
+	lg: rem(200),
+	$mobileBreakpoint: rem(130)
+);
+$header_menuTransition: .4s;
+
+// Default page
+$default_page__padding_bottom: calc(#{$layout_padding} * 2);
+$default_page__padding_top: calc(#{$layout_padding} * 2);

@@ -1,0 +1,19 @@
+// ************ PX to REM ************
+@function stripUnit( $value ){
+	@return $value / ($value * 0 + 1);
+}
+@function rem( $pxValue ){
+	@return #{stripUnit($pxValue) / 16}rem;
+}
+
+
+// ************ URL-encode color /  ************
+@function encodecolor( $string ){
+	@if type-of($string)=='color' and str-index(#{$string}, '#')==1 {
+		$hex: str-slice(ie-hex-str($string), 4);
+		$string: unquote('#{$hex}');
+
+		@return '%23' + $string;
+	}
+	@return $string;
+}

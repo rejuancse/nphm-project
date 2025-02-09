@@ -1,0 +1,153 @@
+/**
+ * Block / Image & text
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+.email-info-wrap {
+	h3 {
+		color: #000;
+		font-size: 32px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 95%;
+	}
+	.block-email-info {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+	}
+	.block__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 38px;
+		min-height: 406px;
+		@media (min-width: 768px) and (max-width: 1280px) {
+			min-height: inherit;
+		}
+		@media screen and (max-width: 767px) {
+			min-height: auto;
+		}
+	}
+	.block__item.banner-image {
+		padding: 0;
+		height: 100%;
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		overflow: hidden;
+
+		img {
+			height: 100%;
+		}
+	}
+
+	a.btn.btn-primary {
+		border-radius: 103px;
+		border: 2px solid #F4E365;
+		display: inline-block !important;
+		color: #5E1742;
+		text-align: center;
+		font-size: 22px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 154.188%;
+		text-decoration: none;
+		padding: 6px 22px;
+
+		&:hover {
+			background: #F4E365;
+			color: #000;
+		}
+
+		@media screen and (max-width: 1024px) {
+			font-size: 16px;
+			padding-top: 0.3125rem;
+			padding-right: 1.5rem;
+			padding-bottom: 0.3125rem;
+			padding-left: 1.5rem;
+		}
+	}
+	.block-email-info p {
+		font-weight: 300;
+		line-height: normal;
+	}
+
+	@media screen and (max-width: 767px) {
+		.block-email-info {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		.block__item.banner-image {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 30px;
+			border-bottom-left-radius: 30px;
+		}
+	}
+}
+
+.oral-history-page.be-instigator-content p {
+    font-weight: 400;
+}
+
+.highlight-card__heading {
+    font-weight: 400 !important;
+}
+
+.oral-history-page.be-instigator-content {
+	padding: 0 !important;
+    margin: 0 !important;
+
+	ul {
+		padding: 0;
+
+		@media (min-width: 768px) and (max-width: 1580px) {
+			padding: 0 0 0 15px;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 1580px) {
+		.wp-block-button__link {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.block-header.grid h2 {
+		visibility: hidden;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.oral-history-page.be-instigator-content ul {
+		padding: 0 0 0 15px;
+	}
+	.oral-history-page.be-instigator-content .wp-block-button__link {
+		display: flex;
+		align-items: center;
+		margin-top: -28px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1580px) {
+    .oral-history-page.be-instigator-content .wp-block-button__link {
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 1281px) and (max-width: 1675px) {
+    .oral-history-page.be-instigator-content ul {
+        padding: 0 0 0 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .oral-history-page.be-instigator-content .wp-block-button__link {
+        margin-top: 0;
+		font-size: 20px;
+    }
+}
+
+.be-instigator-content .wp-block-button__link:hover {
+    background-color: transparent !important;
+}

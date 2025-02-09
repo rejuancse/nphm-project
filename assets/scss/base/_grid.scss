@@ -1,0 +1,159 @@
+/**
+ * Grid
+ */
+
+.container {
+	display: grid;
+	grid-template-columns:
+		[full-start] minmax(#{$layout_padding}, 1fr)
+		[wide-start] minmax(0, #{$layout_breakout})
+		[content-start] minmax(min(100% - #{$layout_padding}*2, #{$layout_content}), 1fr) [content-end]
+		minmax(0, #{$layout_breakout}) [wide-end]
+		minmax(#{$layout_padding}, 1fr) [full-end];
+	margin: 0 auto;
+
+	> *:not(.alignwide):not(.alignfull) {
+		grid-column: content;
+	}
+	> .alignwide {
+		grid-column: wide;
+	}
+	> .alignfull {
+		grid-column: full;
+	}
+}
+
+.grid {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0 calc(#{$layout_padding} * 2);
+
+	&--ai-start {
+		align-items: flex-start;
+	}
+	&--ai-center {
+		align-items: center;
+	}
+	&--ai-end {
+		align-items: flex-end;
+	}
+	&--jc-start {
+		justify-content: flex-start;
+	}
+	&--jc-center {
+		justify-content: center;
+	}
+	&--jc-end {
+		justify-content: flex-end;
+	}
+
+	// .container--*
+	@for $i from 1 through $layout_columns {
+		&--#{$i} > .col {
+			flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+		}
+	}
+	// .container--xl-*
+	@include mediaBetween( lg, xl ){
+		@for $i from 1 through $layout_columns {
+			&--xl-#{$i} > .col {
+				flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+				max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			}
+		}
+	}
+	// .container--lg-*
+	@include mediaBetween( md, lg ){
+		@for $i from 1 through $layout_columns {
+			&--lg-#{$i} > .col {
+				flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+				max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			}
+		}
+	}
+	// .container--md-*
+	@include mediaBetween( sm, md ){
+		@for $i from 1 through $layout_columns {
+			&--md-#{$i} > .col {
+				flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+				max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			}
+		}
+	}
+	// .container--sm-*
+	@include mediaBetween( xs, sm ){
+		@for $i from 1 through $layout_columns {
+			&--sm-#{$i} > .col {
+				flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+				max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			}
+		}
+	}
+	// .container--xs-*
+	@include mediaMaxWidth( xs ){
+		@for $i from 1 through $layout_columns {
+			&--xs-#{$i} > .col {
+				flex: 0 0 calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+				max-width: calc(100%/#{$i} - #{$layout_padding}*2*(#{$i} - 1)/#{$i});
+			}
+		}
+	}
+}
+.col {
+	flex: 1 0 auto;
+	max-width: 100%;
+
+	// .col--*
+	@for $i from 1 through $layout_columns {
+		&--#{$i} {
+			flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+		}
+	}
+	// .col--xl-*
+	@include mediaBetween( lg, xl ){
+		@for $i from 1 through $layout_columns {
+			&--xl-#{$i} {
+				flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+				max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			}
+		}
+	}
+	// .col--lg-*
+	@include mediaBetween( md, lg ){
+		@for $i from 1 through $layout_columns {
+			&--lg-#{$i} {
+				flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+				max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			}
+		}
+	}
+	// .col--md-*
+	@include mediaBetween( sm, md ){
+		@for $i from 1 through $layout_columns {
+			&--md-#{$i} {
+				flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+				max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			}
+		}
+	}
+	// .col--sm-*
+	@include mediaBetween( xs, sm ){
+		@for $i from 1 through $layout_columns {
+			&--sm-#{$i} {
+				flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+				max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			}
+		}
+	}
+	// .col--xs-*
+	@include mediaMaxWidth( xs ){
+		@for $i from 1 through $layout_columns {
+			&--xs-#{$i} {
+				flex: 0 0 calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+				max-width: calc(100%/#{$layout_columns}*#{$i} - #{$layout_padding}*2*(#{$layout_columns}/#{$i} - 1)/(#{$layout_columns}/#{$i}));
+			}
+		}
+	}
+}

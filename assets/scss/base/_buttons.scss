@@ -1,0 +1,231 @@
+/**
+ * Buttons 
+ */
+
+%btn {
+	background-color: $background;
+	border: 2px solid;
+	border-radius: $borderradius_large;
+	color: $foreground;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $primary_font;
+	font-size: $fsize_large;
+	font-weight: 400;
+	line-height: $lineheight_default;
+	padding: 0.3125rem 1.5rem;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	transition: background .2s, border-color .2s, box-shadow .2s, color .2s;
+
+	&[disabled],
+	&.disabled {
+		background-color: $light_gray !important;
+		border-color: $light_gray !important;
+		box-shadow: none !important;
+		color: $background !important;
+		cursor: not-allowed;
+		outline: none !important;
+		text-decoration: none !important;
+	}
+
+	&:hover,
+	&:focus {
+		@include mediaMinWidth( $mobileBreakpoint ){
+			text-decoration: underline;
+		}
+	}
+	&:focus-visible {
+		box-shadow: $focus_default;
+	}
+}
+
+.button {
+	@extend %btn;
+
+	&--outline {
+		background: transparent !important;
+
+		
+		&.button--background {
+			border-color: $background;
+			color: $background;
+
+			&:hover,
+			&:focus {
+				background: $background !important;
+				color: $foreground;
+			}
+		}
+		&.button--foreground {
+			border-color: $foreground;
+			color: $foreground;
+
+			&:hover,
+			&:focus {
+				background: $foreground !important;
+				color: $background;
+			}
+		}
+		&.button--red {
+			border-color: $red;
+			color: $red;
+
+			&:hover,
+			&:focus {
+				background: $red !important;
+				color: $background;
+			}
+		}
+		&.button--orange {
+			border-color: $orange;
+			color: $orange;
+
+			&:hover,
+			&:focus {
+				background: $orange !important;
+				color: $background;
+			}
+		}
+		&.button--coral {
+			border-color: $coral;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $coral !important;
+			}
+		}
+		&.button--peach {
+			border-color: $peach;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $peach !important;
+			}
+		}
+		&.button--brown {
+			border-color: $brown;
+			color: $brown;
+
+			&:hover,
+			&:focus {
+				background: $brown !important;
+				color: $background;
+			}
+		}
+		&.button--taupe {
+			border-color: $taupe;
+
+			&:hover,
+			&:focus {
+				background: $taupe !important;
+			}
+		}
+		&.button--beige {
+			border-color: $beige;
+
+			&:hover,
+			&:focus {
+				background: $beige !important;
+			}
+		}
+		&.button--plum {
+			border-color: $plum;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $plum !important;
+				color: $background;
+			}
+		}
+		&.button--pink {
+			border-color: $pink;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $pink !important;
+			}
+		}
+		&.button--light-blue {
+			border-color: $light_blue;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $light_blue !important;
+			}
+		}
+		&.button--turquoise {
+			border-color: $turquoise;
+			color: $turquoise;
+
+			&:hover,
+			&:focus {
+				background: $turquoise !important;
+				color: $background;
+			}
+		}
+		&.button--mint {
+			border-color: $mint;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $mint !important;
+			}
+		}
+		&.button--lemon {
+			border-color: $lemon;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $lemon !important;
+			}
+		}
+		&.button--light-yellow {
+			border-color: $light_yellow;
+			color: $plum;
+
+			&:hover,
+			&:focus {
+				background: $light_yellow !important;
+			}
+		}
+		&.button--dark-gray {
+			border-color: $dark_gray;
+
+			&:hover,
+			&:focus {
+				background: $dark_gray !important;
+				color: $background;
+			}
+		}
+		&.button--medium-gray {
+			border-color: $medium_gray;
+
+			&:hover,
+			&:focus {
+				background: $medium_gray !important;
+			}
+		}
+		&.button--light-gray {
+			border-color: $light_gray;
+
+			&:hover,
+			&:focus {
+				background: $light_gray !important;
+			}
+		}
+
+		&:hover,
+		&:focus {
+			text-decoration: none !important;
+		}
+	}
+}

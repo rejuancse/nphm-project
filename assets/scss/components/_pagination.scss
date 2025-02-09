@@ -1,0 +1,50 @@
+/**
+ * Pagination
+ */
+
+.pagination {
+	margin: calc(#{$layout_padding} * 2) 0 0;
+
+	.nav-links {
+		justify-content: center;
+		display: flex;
+		flex-flow: row wrap;
+		margin: 0 -5px;
+	}
+	.page-numbers {
+		color: $foreground;
+		display: inline-block;
+		margin: 2px;
+		min-width: rem(30);
+		padding: 5px 5px;
+		text-align: center;
+		text-decoration: none;
+		transition: all .2s;
+
+		&:hover,
+		&:focus {
+			@include mediaMinWidth( $mobileBreakpoint ){
+				text-decoration: underline;
+			}
+		}
+		&.prev,
+		&.next {
+			padding: 5px 10px;
+
+			&.disabled {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+		&.prev {
+			margin-right: auto;
+		}
+		&.next {
+			margin-left: auto;
+		}
+		&.current {
+			font-weight: 700;
+			pointer-events: none;
+		}
+	}
+}

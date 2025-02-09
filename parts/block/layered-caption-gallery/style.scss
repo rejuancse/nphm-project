@@ -1,0 +1,133 @@
+/**
+ * Block / Layered caption gallery
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-layered-caption-gallery {
+	$b: &;
+
+	margin: calc(#{$layout_padding} * -1) calc(#{$layout_padding} * -1) calc(#{$layout_padding});
+
+	&__grid-sizer {
+		width: .1%;
+	}
+	&__item {
+		display: flex;
+		flex-flow: column nowrap;
+		margin: 0;
+		padding: $layout_padding;
+
+		&.is-wide {
+			width: 49.9%;
+
+			@include mediaMaxWidth( xs ){
+				width: 100%;
+			}
+		}
+		&.is-tall {
+			width: 33.3%;
+
+			@include mediaBetween( xs, md ){
+				width: 49.9%;
+			}
+			@include mediaMaxWidth( xs ){
+				width: 100%;
+			}
+		}
+
+		&:nth-child(2n) {
+			#{$b}__media-caption {
+				background: $beige;
+			}
+
+			&.is-wide {
+				@include mediaMinWidth( xs ){
+					#{$b}__media-caption {
+						margin: rem(-20) rem(30) 0 rem(60);
+					}
+				}
+			}
+		}
+		&:nth-child(2n+1) {
+			#{$b}__media-caption {
+				background: $peach;
+			}
+
+			&.is-wide {
+				@include mediaMinWidth( xs ){
+					#{$b}__media-caption {
+						align-self: flex-end;
+						margin: rem(-20) rem(50) 0 rem(20);
+					}
+				}
+			}
+		}
+		&:nth-child(3n) {
+			&.is-tall {
+				@include mediaMinWidth( xs ){
+					#{$b}__media-caption {
+						align-self: flex-end;
+						margin: rem(-20) rem(10) 0 rem(40);
+					}
+				}
+			}
+		}
+		&:nth-child(3n+1) {
+			&.is-tall {
+				@include mediaMinWidth( xs ){
+					#{$b}__media-caption {
+						margin: rem(-20) rem(30) 0 calc(#{$layout_padding} * -1);
+					}
+				}
+			}
+		}
+		&:nth-child(3n+2) {
+			&.is-tall {
+				@include mediaMinWidth( xs ){
+					#{$b}__media-caption {
+						align-self: flex-end;
+						margin: rem(-20) calc(#{$layout_padding} * -1.5) 0 rem(10);
+					}
+				}
+			}
+		}
+	}
+	&__image {
+		vertical-align: middle;
+	}
+	&__media-caption {
+		padding: rem(10) rem(15);
+		position: relative;
+		z-index: 1;
+
+		@include mediaMinWidth( xs ){
+			align-self: flex-start;
+			max-width: rem(450);
+		}
+
+		a {
+			font-weight: inherit !important;
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		display: flex;
+		flex-flow: row wrap;
+
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

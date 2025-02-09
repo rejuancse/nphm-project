@@ -1,0 +1,30 @@
+{
+	"name": "cs/media-text-overview",
+	"title": "Media Text Overview",
+	"description": "",
+	"category": "nphm-blocks",
+	"icon": "",
+	"style": "block-media-text-overview",
+	"script": "",
+	"editorStyle": "",
+	"apiVersion": 2,
+	"keywords": [],
+	"acf": {
+		"mode": "auto",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

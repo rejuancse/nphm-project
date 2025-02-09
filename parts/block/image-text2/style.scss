@@ -1,0 +1,128 @@
+/**
+ * Block / Image & text2
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-image-text2 {
+	$b: &;
+
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0 0 calc(#{$layout_padding} * 3);
+	overflow: hidden;
+
+	@include mediaMaxWidth( sm ){
+		border-radius: $borderradius_medium $borderradius_medium 0 0;
+		flex-flow: row wrap;
+	}
+
+	&__media-wrap {
+		line-height: 0;
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+
+		@include mediaMaxWidth( sm ){
+			flex: 0 0 100% !important;
+			max-width: 100% !important;
+		}
+	}
+	&__image {
+		display: block;
+		height: auto;
+		max-width: unset;
+		width: 100%;
+	}
+	&__media-caption {
+		background-color: $background;
+		display: block;
+		font-size: $fsize_medium;
+		left: $layout_padding;
+		line-height: $lineheight_default;
+		margin: 0;
+		padding: rem(6) rem(9);
+		position: absolute;
+		top: $layout_padding;
+		z-index: 2;
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+			top: calc(#{$layout_padding} * 1.5);
+		}
+	}
+	&__text {
+		display: flex;
+		flex-flow: column nowrap;
+		padding: calc(#{$layout_padding} * 2);
+
+		@include mediaMaxWidth( sm ){
+			flex: 0 0 100% !important;
+			max-width: 100% !important;
+		}
+	}
+	&__link-wrap {
+		margin: auto 0 0;
+		text-align: right;
+	}
+
+	@include addColorVariations('&.has-background', '', 'background-color');
+	@include addColorVariations('&.has-background', ' .block-image-text__media-caption', 'background-color');
+	@include addColorVariations('&.has-badge', ' .block-image-text__media-caption', 'background-color');
+
+	&.has-image-cropped {
+		#{$b}__media-wrap {
+			min-height: rem(350);
+			padding-top: 25%;
+
+			@include mediaMaxWidth( md ){
+				min-height: rem(250);
+			}
+			@include mediaMaxWidth( sm ){
+				padding-top: 60%;
+			}
+		}
+		#{$b}__image {
+			height: 100%;
+			left: 0;
+			object-fit: cover;
+			object-position: 50% 50%;
+			position: absolute;
+			top: 0;
+		}
+	}
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+		#{$b}__media-wrap {
+			display: block;
+			margin: 0;
+		}
+		#{$b}__image {
+			height: 100% !important;
+			max-width: none !important;
+		}
+		#{$b}__text {
+			p, h1, h2, h3, h4, h5, h6 {
+				margin: 0 0 $margin_default;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

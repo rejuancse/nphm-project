@@ -1,0 +1,30 @@
+{
+	"name": "cs/layered-content-1-img",
+	"title": "Layered content with 1 image",
+	"description": "",
+	"category": "nphm-blocks",
+	"icon": "",
+	"style": "block-layered-content-1-img",
+	"script": "",
+	"editorStyle": "",
+	"apiVersion": 2,
+	"keywords": [],
+	"acf": {
+		"mode": "auto",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

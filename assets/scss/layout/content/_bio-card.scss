@@ -1,0 +1,90 @@
+/**
+ * Content / Bio card
+ */
+
+.bio-card {
+	$c: &;
+
+	border-radius: $borderradius_large $borderradius_large 0 0;
+	display: grid;
+	grid-template-areas:
+		"image"
+		"content";
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	overflow: hidden;
+
+	@include mediaMaxWidth( md ){
+		border-radius: $borderradius_medium $borderradius_medium 0 0;
+	}
+
+	&__media-wrap {
+		border-top-left-radius: inherit;
+		border-top-right-radius: inherit;
+		grid-area: image;
+		line-height: 0;
+		margin: 0;
+		overflow: hidden;
+		padding-top: 153.55%;
+		position: relative;
+		z-index: 1;
+	}
+	&__image {
+		display: block;
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		object-position: 50% 50%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+	&__content-wrap {
+		grid-area: content;
+		margin: rem(26) 0 0;
+
+		@include mediaMaxWidth( md ){
+			margin: 1rem 0 0;
+		}
+	}
+	&__name {
+		font-size: $fsize_h4;
+		margin: 0 0 rem(4);
+	}
+	&__pronouns {
+		font-size: $fsize_medium;
+		font-weight: 400;
+		margin: 0 0 rem(10);
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+		}
+	}
+	&__position {
+		font-size: $fsize_h5;
+		font-weight: 400;
+		margin: 0 0 rem(4);
+	}
+	&__text {
+		font-weight: 300;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&__link-wrap {
+		margin: 1rem 0 0;
+	}
+	&__link {
+		@include mediaMinWidth( md ){
+			font-size: $fsize_medium !important;
+			
+			&::after {
+				height: calc(#{$fsize_medium} * #{$lineheight_default}) !important;
+				mask-size: #{$fsize_medium} #{$fsize_medium} !important;
+				width: calc(#{$fsize_medium} * #{$lineheight_default}) !important;
+			}
+		}
+	}
+}

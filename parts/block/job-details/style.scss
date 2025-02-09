@@ -1,0 +1,57 @@
+/**
+ * Block / Job details
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-job-details {
+	$b: &;
+
+	display: grid;
+	gap: $layout_padding calc(#{$layout_padding} * 2);
+	grid-template-columns: auto 1fr;
+	margin: 0 0 calc(#{$layout_padding} * 2);
+	padding: 0;
+
+	&__heading {
+		font-family: $secondary_font;
+		font-size: $fsize_h6;
+		font-weight: 500;
+		margin: 0;
+		min-width: rem(90);
+		text-transform: uppercase;
+	}
+	&__text {
+		font-size: $fsize_medium;
+		margin: 0;
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+		}
+	}
+	&__link-wrap {
+		margin-top: rem(20);
+	}
+	&__link {
+		@include mediaMinWidth( md ){
+			font-size: $fsize_medium !important;
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"name": "cs/cards-slider",
+	"title": "Cards Slider",
+	"description": "",
+	"category": "nphm-blocks",
+	"icon": "",
+	"style": "block-cards-slider",
+	"script": "block-cards-slider",
+	"editorStyle": "",
+	"apiVersion": 2,
+	"keywords": [],
+	"acf": {
+		"mode": "auto",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

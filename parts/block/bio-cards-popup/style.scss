@@ -1,0 +1,340 @@
+/**
+ * Block / Bio cards
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-bio-cards-popup {
+	$b: &;
+
+	gap: calc(#{$layout_padding} * 2 + #{rem(5)}) calc(#{$layout_padding} * 2) !important;
+	list-style: none;
+	margin: 0 0 calc(#{$layout_padding} * 2);
+	padding: 0;
+
+	&__item {
+		.bio-card-popup {
+			height: 100%;
+		}
+	}
+
+	&.grid--xs-2 {
+		@include mediaMaxWidth(350){
+			.col {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+		}
+	}
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+
+	.bio-card__media-wrap {
+		background-color: $taupe;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+	}
+
+	.openPopupBtn {
+		padding: 0px 33px;
+		font-size: 22px;
+		line-height: 154.2%;
+		cursor: pointer;
+		margin: 30px 0px 0px 0px;
+		background-color: transparent;
+		text-transform: capitalize;
+		font-weight: 400;
+		color: $plum;
+		border: 2.38px solid $taupe;
+		border-radius: 30px;
+		width: fit-content;
+		min-height: 41px;
+
+		@media (min-width: 768px) and (max-width: 1280px) {
+			margin: 20px 0px 0px 0px;
+		}
+
+		@media screen and (max-width: 767px) {
+			font-size: 18px;
+			padding: 0px 22px;
+			min-height: 33px;
+			margin-top: 20px;
+		}
+
+		&:hover {
+			background: $taupe;
+		}
+	}
+
+	.popup {
+		display: none;
+		position: fixed;
+		z-index: 99999;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(5px);
+		padding: 20px 0;
+		box-sizing: border-box;
+		overflow-y: auto;
+	}
+
+	.popup-content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background-color: $beige;
+		padding: 52.82px 42.82px 150.35px 42.82px;
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		width: 900px;
+		height: auto;
+		margin-top: 100px;
+	}
+
+	.bio-card__position {
+		font-weight: 400;
+		line-height: 95.797%;
+
+		@media (min-width: 1025px) and (max-width: 1280px) {
+			font-size: 22px;
+		}
+	}
+
+	.bio-card__content-wrap {
+		margin: 2rem 0 0;
+		.bio-card__name {
+			display: inline-block;
+			width: 100%;
+			font-size: 36px;
+			text-transform: capitalize;
+			font-weight: 500;
+			line-height: normal;
+			margin-bottom: 8px;
+
+			@media (min-width: 768px) and (max-width: 1280px) {
+				font-size: 26px;
+				margin-bottom: 8px;
+			}
+
+			@media screen and (max-width: 767px) {
+				font-size: 22px;
+				margin-bottom: 8px;
+			}
+		}
+		.bio-card_name_pronouns {
+			text-transform: capitalize;
+			font-size: 18px !important;
+			line-height: normal;
+			font-weight: 400;
+
+			@media (min-width: 768px) and (max-width: 1280px) {
+				font-size: 15px !important;
+			}
+
+			@media screen and (max-width: 767px) {
+				font-size: 14px !important;
+			}
+		}
+	}
+
+	.popup-other-contents-wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 30px;
+		.image-box {
+			flex-basis: 50%;
+			position: relative;
+			.bio-card__media-wrap {
+				margin-left: -97px;
+				border-radius: 0px;
+				padding-top: 135.55%;
+			}
+		}
+		.popup-other--contents {
+			flex-basis: 50%;
+			max-height: 513px;
+			overflow-y: auto;
+			scrollbar-width: thin;
+			scrollbar-color: $beige $plum;
+			.relationship_to_public_housing {
+				margin-bottom: 35px;
+				p {
+					font-weight: 500;
+					line-height: 150%;
+				}
+			}
+			.what_identities_are_central_to_you {
+				margin-bottom: 35px;
+				p {
+					font-weight: 400;
+					line-height: 120%;
+				}
+			}
+			.about_you_answer {
+				margin-bottom: 35px;
+				p {
+					font-weight: 400;
+					line-height: 120%;
+				}
+			}
+		}
+	}
+
+	.popup-content-wrap {
+		.popup-content-title {
+			font-size: $fsize_h3;
+			margin-bottom: 10px;
+			span {
+				font-size: $fsize_medium;
+			}
+		}
+		.popup-content-city {
+			font-size: $fsize_medium;
+			margin-bottom: 20px;
+			display: block;
+		}
+		.popup-content-footer {
+			margin-top: 93px;
+			border-top: .1875rem solid $plum;
+			p {
+				font-size: $fsize_base;
+				font-weight: 500;
+				margin-bottom: 0px;
+				margin-top: 15px;
+			}
+		}
+	}
+
+	/* Webkit-based browsers (Chrome, Safari) */
+	.popup-other--contents::-webkit-scrollbar {
+		width: 12px; /* Width of the scrollbar */
+	}
+
+	.popup-other--contents::-webkit-scrollbar-track {
+		background: $plum; /* Background of the scrollbar track */
+	}
+
+	.popup-other--contents::-webkit-scrollbar-thumb {
+		background: $beige; /* Color of the scrollbar thumb */
+		border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+		border: 3px solid $plum; /* Space around the thumb */
+	}
+
+	.popup-other--contents::-webkit-scrollbar-thumb:hover {
+		background: $plum; /* Color of the scrollbar thumb when hovered */
+	}
+	@media screen and (max-width: 1100px) {
+		.popup-content {
+			width: 768px;
+		}
+		.popup-other-contents-wrap {
+			gap: 30px;
+		}
+		.popup-content {
+			padding: 40px;
+		}
+		.popup-content-wrap {
+			.popup-content-footer {
+				margin-top: 40px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 900px) {
+		.popup-content {
+			width: 80%;
+		}
+		.popup-content {
+			padding: 20px;
+		}
+		.popup-content-wrap {
+			.popup-content-footer {
+				margin-top: 20px;
+			}
+		}
+		.popup-other-contents-wrap {
+			.image-box {
+				.bio-card__media-wrap {
+					margin-left: -57px;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 625px) {
+		.popup-other-contents-wrap {
+			flex-direction: column;
+			.image-box {
+				flex-basis: 100%;
+				width: 100%;
+				height: 250px;
+				.bio-card__media-wrap {
+					margin-left: 0px !important;
+					width: 100%;
+					padding-top: 70.55%;
+				}
+			}
+			.popup-other--contents {
+				flex-basis: 100%;
+			}
+		}
+	}
+
+
+	article.bio-card-popup {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+	.bio-card__content-wrap {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+
+		.bio-card__link-wrap {
+			margin: 8px 0 0;
+
+			.bio-card__link {
+				font-weight: 300;
+				font-size: 24px !important;
+				line-height: normal;
+				margin-top: 3px;
+
+				@media (min-width: 768px) and (max-width: 1280px) {
+					font-size: 15px !important;
+					margin-top: 0px;
+				}
+
+				@media screen and (max-width: 767px) {
+					font-size: 14px !important;
+					margin-top: 0px;
+				}
+
+				&:after {
+					display: none !important;
+				}
+			}
+		}
+	}
+}

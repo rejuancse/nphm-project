@@ -1,0 +1,225 @@
+/**
+ * Block / Layered content with 2 images
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-layered-content-2-img {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 2);
+
+	&__media-wrap {
+		line-height: 0;
+		margin: 0;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+
+		&--top {
+			min-height: rem(350);
+			padding-top: 45%;
+
+			@include mediaMaxWidth( xs ){
+				margin: 0 calc(#{$layout_padding} * -1);
+			}
+		}
+		&--aside {
+			align-self: flex-start;
+			grid-area: image;
+			min-height: rem(350);
+			margin-left: rem(-125);
+			padding-top: 142%;
+
+			@include mediaBetween( xs,md ){
+				margin-left: calc(#{$layout_padding} * -4);
+			}
+			@include mediaMaxWidth( xs ){
+				margin: 0 0 calc(#{$layout_padding} * 2);
+				min-height: rem(300);
+				padding-top: 80%;
+			}
+		}
+	}
+	&__image {
+		display: block;
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		object-position: 50% 50%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+	&__content-wrap {
+		background-color: $peach;
+		border-radius: $borderradius_large $borderradius_large 0 0;
+		display: grid;
+		gap: 0 calc(#{$layout_padding} * 2);
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"heading heading"
+			"image text"
+			"footer footer";
+		margin: 0 clamp(calc(#{$layout_padding} * 2), 11.21vw, 11.25rem);
+		padding: rem(50) calc(#{$layout_padding} * 2) rem(90);
+		position: relative;
+		z-index: 2;
+
+		@include mediaMaxWidth( md ){
+			border-radius: $borderradius_medium $borderradius_medium 0 0;
+		}
+		@include mediaBetween( xs,md ){
+			margin: 0 calc(#{$layout_padding} * 2);
+			padding: rem(30) calc(#{$layout_padding} * 2) rem(60);
+		}
+		@include mediaMaxWidth( xs ){
+			display: block;
+			margin: 0;
+			padding: rem(30) calc(#{$layout_padding} * 2);
+		}
+	}
+	&__heading {
+		font-size: $fsize_h1;
+		font-weight: 500;
+		grid-area: heading;
+		letter-spacing: -0.03em;
+		line-height: $lineheight_default;
+		margin: 0 0 rem(45);
+
+		@include mediaMaxWidth( md ){
+			margin: 0 0 rem(25);
+		}
+	}
+	&__text {
+		grid-area: text;
+	}
+	&__footer {
+		border-top: 3px solid $plum;
+		display: flex;
+		flex-flow: row nowrap;
+		gap: 0 calc(#{$layout_padding} * 2);
+		grid-area: footer;
+		margin: rem(100) 0 0;
+		padding: rem(15) 0 0;
+
+		@include mediaMaxWidth( md ){
+			margin: rem(50) 0 0;
+		}
+		@include mediaMaxWidth( xs ){
+			display: block;
+		}
+	}
+	&__caption {
+		flex: 0 0 calc(50% - #{$layout_padding});
+		font-size: $fsize_medium;
+		max-width: calc(50% - #{$layout_padding});
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+		}
+		@include mediaMaxWidth( xs ){
+			max-width: 100%;
+
+			&:not(:last-child) {
+				margin-bottom: calc(#{$layout_padding} * 2);
+			}
+		}
+	}
+	&__text-aside {
+		background-color: $coral;
+		flex: 0 0 calc(50% + #{$layout_padding});
+		margin: rem(-150) 0 0 auto;
+		max-width: calc(50% + #{$layout_padding});
+		padding: calc(#{$layout_padding} * 2);
+		position: relative;
+		transform: translateX(clamp(calc(#{$layout_padding} * 2), 11.21vw, 11.25rem));
+		z-index: 2;
+
+		@include mediaBetween( xs,md ){
+			margin: rem(-80) 0 0 auto;
+			transform: translateX(calc(#{$layout_padding} * 2));
+		}
+		@include mediaMaxWidth( xs ){
+			margin: 0;
+			max-width: 100%;
+			transform: none;
+		}
+	}
+
+	@include addColorVariations('&.has-background', ' .block-layered-content-2-img__content-wrap', 'background-color');
+
+	&.has-background-orange {
+		#{$b}__text-aside {
+			background-color: $peach;
+		}
+	}
+	&.has-background-peach {
+		#{$b}__text-aside {
+			background-color: $coral;
+		}
+	}
+	&.has-background-taupe {
+		#{$b}__text-aside {
+			background-color: $beige;
+		}
+	}
+	&.has-background-pink {
+		#{$b}__text-aside {
+			background-color: #F5E2EB;
+		}
+	}
+	&.has-background-light-blue {
+		#{$b}__text-aside {
+			background-color: $lemon;
+		}
+	}
+	&.has-background-mint {
+		#{$b}__text-aside {
+			background-color: $turquoise;
+		}
+	}
+	&.has-background-lemon {
+		#{$b}__text-aside {
+			background-color: $light_yellow;
+		}
+	}
+	&.has-image-top {
+		#{$b}__content-wrap {
+			margin-top: rem(-90);
+
+			@include mediaMaxWidth( md ){
+				margin-top: rem(-50);
+			}
+		}
+	}
+	&.has-text-aside {
+		#{$b}__text {
+			padding-bottom: rem(90);
+
+			@include mediaBetween( xs,md ){
+				padding-bottom: rem(50);
+			}
+			@include mediaMaxWidth( xs ){
+				padding-bottom: 0;
+			}
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

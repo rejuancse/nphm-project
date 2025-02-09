@@ -1,0 +1,56 @@
+/**
+ * Block / Masonry gallery
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-masonry-gallery {
+	$b: &;
+
+	margin: calc(#{$layout_padding} * -1) calc(#{$layout_padding} * -1) calc(#{$layout_padding});
+
+	&__item {
+		padding: $layout_padding;
+		margin: 0;
+		width: (100%/3);
+
+		@include mediaBetween( xs, md ){
+			width: 50%;
+		}
+		@include mediaMaxWidth( xs ){
+			width: 100%;
+		}
+	}
+	&__media-caption {
+		font-size: $fsize_medium;
+		line-height: $lineheight_default;
+		margin: rem(10) 0 0;
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		display: flex;
+		flex-flow: row wrap;
+
+		* {
+			box-sizing: border-box;
+		}
+		#{$b}__item {
+			box-sizing: border-box;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"name": "cs/header",
+	"title": "Header",
+	"description": "",
+	"category": "nphm-blocks",
+	"icon": "",
+	"style": "block-header",
+	"script": "",
+	"editorStyle": "",
+	"apiVersion": 2,
+	"keywords": [],
+	"acf": {
+		"mode": "auto",
+		"renderTemplate": "render.php"
+	},
+	"attributes": {},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

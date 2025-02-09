@@ -1,0 +1,347 @@
+/**
+ * Calendar
+ */
+
+.calendar {
+	$c: &;
+
+	display: flex;
+	flex-flow: column;
+
+	*::-webkit-scrollbar {
+		height: 3px;
+		width: 3px;
+	}
+	*::-webkit-scrollbar-track {
+		border-radius: 2px;
+		background-color: rgba(255,255,255,0.2);
+	}
+	
+	*::-webkit-scrollbar-thumb {
+		border-radius: 2px;
+		background-color: rgba(0,0,0,0.2);
+	}
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-flow: row nowrap;
+	}
+	&__month-year {
+		text-align: center;
+	}
+	&__arrow {
+		background: transparent;
+		border: none;
+		font-size: 0;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		overflow: hidden;
+		text-indent: -9999px;
+
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 50%;
+			z-index: 1;
+		}
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		gap: 0 0;
+	}
+	&__weekday-name {
+		text-align: center;
+	}
+	&__day {
+		display: flex;
+		flex-flow: column;
+		position: relative;
+
+		&-number {
+			text-align: center;
+		}
+	}
+
+	&:not(.is-type-mini) {
+		#{$c}__header {
+			gap: 0 rem(10);
+			justify-content: center;
+			padding: rem(20) 0;
+		}
+		#{$c}__body {
+			overflow-x: auto;
+		}
+		#{$c}__month-year {
+			color: $plum;
+			font-size: $fsize_h3;
+			font-weight: 400;
+		}
+		#{$c}__arrow {
+			height: $fsize_h3;
+			width: $fsize_h3;
+
+			&::before {
+				border-style: solid;
+				height: rem(16);
+				width: rem(16);
+			}
+			&::after {
+				background: $plum;
+				height: rem(2);
+				width: rem(22);
+			}
+
+			&--prev {
+				&::before {
+					border-color: transparent transparent $plum $plum;
+					border-width: 0 0 rem(2) rem(2);
+					left: rem(8);
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&::after {
+					left: rem(8);
+					transform: translateY(-50%);
+				}
+			}
+			&--next {
+				&::before {
+					border-color: $plum $plum transparent transparent;
+					border-width: rem(2) rem(2) 0 0;
+					right: rem(8);
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&::after {
+					right: rem(8);
+					transform: translateY(-50%);
+				}
+			}
+
+			&:focus-visible {
+				box-shadow: $focus_default;
+			}
+		}
+		#{$c}__weekday-name {
+			border-bottom: 1px solid $plum;
+			color: $plum;
+			font-size: $fsize_h5;
+			font-weight: 400;
+			padding: rem(20);
+		}
+		#{$c}__day {
+			aspect-ratio: 1/ 1;
+			background: $light_gray;
+			border-bottom: 1px solid $plum;
+			border-right: 1px solid $plum;
+			min-height: rem(100);
+			padding: rem(15);
+
+			@include mediaMaxWidth( md ){
+				min-height: rem(50);
+			}
+			@include mediaMaxWidth( lg ){
+				padding: rem(10);
+			}
+
+			&::after {
+				background-color: $plum;
+				bottom: 0;
+				content: '';
+				display: block;
+				height: 2px;
+				left: -1px;
+				opacity: 0;
+				position: absolute;
+				transition: opacity .2s,visibility .2s;
+				visibility: hidden;
+				width: calc(100% + 2px);
+				z-index: 1;
+			}
+			&-number {
+				color: $plum;
+				font-size: $fsize_h5;
+				font-weight: 400;
+				margin: 0 0 rem(10);
+
+				@include mediaBetween( md,lg ){
+					font-size: 1.4rem;
+				}
+			}
+
+			&:nth-child(7n+1) {
+				border-left: 1px solid $plum;
+			}
+			&:hover {
+				&::after {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+
+			&.has-events {
+				background-color: $pink;
+
+				&.is-past {}
+			}
+			&.is-current {}
+			&.is-other-month {
+				background-color: $background;
+			}
+			&.is-past {}
+		}
+		#{$c}__events {
+			font-size: $fsize_medium;
+			margin-top: auto;
+			overflow-y: auto;
+
+			@include mediaMaxWidth( lg ){
+				font-size: $fsize_base;
+			}
+		}
+		#{$c}__event {
+			word-wrap: break-word;
+	
+			time {
+				display: inline-block;
+				font-size: $fsize_base;
+				margin: 0 0 rem(5);
+				opacity: 0.9;
+
+				@include mediaBetween( md,lg ){
+					font-size: $fsize_small;
+				}
+			}
+			& + #{$c}__event {
+				margin-top: rem(15);
+
+				@include mediaMaxWidth( lg ){
+					margin-top: rem(10);
+				}
+			}
+		}
+	}
+	&.is-type-mini {
+		max-width: rem(375);
+
+		#{$c}__header {
+			justify-content: space-between;
+			gap: 0 rem(10);
+			margin: 0 0 rem(10);
+			padding: rem(10) 0;
+		}
+		#{$c}__month-year {
+			font-size: rem(20);
+			font-weight: 400;
+
+			@include mediaMaxWidth(md){
+				font-size: $fsize_base;
+			}
+		}
+		#{$c}__arrow {
+			height: rem(20);
+			width: rem(20);
+
+			&::before {
+				border-style: solid;
+				height: rem(8);
+				width: rem(8);
+			}
+			&::after {
+				background: currentColor;
+				height: rem(2);
+				width: rem(14);
+			}
+
+			&--prev {
+				&::before {
+					border-color: transparent transparent currentColor currentColor;
+					border-width: 0 0 rem(2) rem(2);
+					left: rem(4);
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&::after {
+					left: rem(4);
+					transform: translateY(-50%);
+				}
+			}
+			&--next {
+				&::before {
+					border-color: currentColor currentColor transparent transparent;
+					border-width: rem(2) rem(2) 0 0;
+					right: rem(4);
+					transform: translateY(-50%) rotate(45deg);
+				}
+				&::after {
+					right: rem(4);
+					transform: translateY(-50%);
+				}
+			}
+
+			&:focus-visible {
+				box-shadow: $focus_default;
+			}
+		}
+		#{$c}__weekday-name {
+			font-size: rem(20);
+			font-weight: 400;
+			padding: rem(2) rem(3) rem(12);
+
+			@include mediaMaxWidth(md){
+				font-size: $fsize_base;
+			}
+		}
+		#{$c}__day {
+			align-items: center;
+			min-height: rem(45);
+			padding: rem(2) rem(3);
+
+			@include mediaMaxWidth(md){
+				min-height: rem(38);
+			}
+
+			&-number {
+				border-radius: 50%;
+				font-size: rem(20);
+				font-weight: 400;
+				margin: 0 0 rem(5);
+				min-width: rem(30);
+				padding: rem(3);
+
+				@include mediaMaxWidth(md){
+					font-size: $fsize_base;
+					min-width: rem(23);
+				}
+			}
+			
+			&.is-current {
+				#{$c}__day-number {
+					background-color: $pink;
+				}
+			}
+			&.is-other-month {
+				height: 0;
+				min-height: 0;
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+		#{$c}__events {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: center;
+
+			&:not(:empty) {
+				background: $pink;
+				border-radius: 50%;
+				height: rem(6);
+				width: rem(6);
+			}
+		}
+		#{$c}__event {
+			display: none;
+		}
+	}
+}

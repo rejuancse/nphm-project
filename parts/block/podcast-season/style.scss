@@ -1,0 +1,133 @@
+/**
+* Block / NPHM Info block
+*/
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+.block-podcast-season {
+	margin-top: 20px;
+
+	// Tabs
+	.podcast-tabs {
+		display: grid;
+
+		.season-info-wrap {
+			display: grid;
+			grid-template-columns: 507px 1fr;
+			gap: 140px;
+			margin-top: 106px;
+
+			@media (min-width: 982px) and (max-width: 1380px) {
+				grid-template-columns: 320px 1fr;
+				gap: 40px;
+				margin-top: 50px;
+			}
+
+			@media screen and (max-width: 981px) {
+				margin-top: 30px;
+				grid-template-columns: 1fr;
+				gap: 30px;
+			}
+
+			// .right-side {
+			// 	.lightweight-accordion {
+			// 		span {
+			// 			text-decoration: underline;
+			// 		}
+			// 	}
+			// }
+		}
+	}
+
+	.season-btn {
+		text-align: center;
+		border-bottom: 3px solid #5E1742;
+		padding-bottom: 40px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		align-items: center;
+		justify-content: center;
+
+		@media (min-width: 768px) and (max-width: 1280px) {
+			padding-bottom: 30px;
+		}
+
+		@media screen and (max-width: 767px) {
+			gap: 12px 5px;
+			padding-bottom: 30px;
+		}
+
+		button {
+			color: #000;
+			height: 33px;
+			min-width: 165px;
+			transition: .4s;
+			align-items: center;
+			gap: 10px;
+			border: 2px solid #E2C8C1;
+			background: transparent;
+			padding: 0px 11px;
+			font-size: 24px;
+			font-weight: 400;
+			// line-height: normal;
+			border-radius: 30px;
+			text-align: center;
+			margin: 0;
+
+			@media screen and (max-width: 767px) {
+				margin: 0 3px;
+			}
+
+			&:hover {
+				background: #E2C8C1;
+			}
+
+			@media screen and (max-width: 981px) {
+				font-size: 18px;
+				padding: 0 20px 2px;
+				min-width: 130px;
+			}
+		}
+
+		button[aria-selected="true"] {
+			background: #E2C8C1;
+			box-shadow: none;
+			font-weight: 500;
+		}
+
+		button:focus {
+			outline: 0;
+			--bs-color: rgba(0,0,0,0.6);
+		}
+	}
+
+	.right-side {
+		.lightweight-accordion {
+			margin-bottom: 48px;
+
+			@media screen and (max-width: 981px) {
+				margin-bottom: 30px;
+			}
+
+			.lightweight-accordion-title {
+				padding: 18px 0 24px;
+			}
+
+			.lightweight-accordion-body.active-arrow {
+				border-top: 3px solid #5E1742;
+				padding-top: 25px;
+				padding-bottom: 35px;
+			}
+		}
+
+		.audio-info {
+			margin-bottom: 46px;
+
+			@media screen and (max-width: 981px) {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}

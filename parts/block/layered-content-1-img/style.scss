@@ -1,0 +1,149 @@
+/**
+ * Block / Layered content with 1 image
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-layered-content-1-img {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 2);
+	padding: rem(100) 0 rem(75);
+	position: relative;
+
+	@include mediaMaxWidth( md ){
+		padding: rem(60) 0 rem(40);
+	}
+
+	&::before {
+		background: $peach;
+		bottom: 0;
+		content: '';
+		display: block;
+		position: absolute;
+		top: rem(100);
+		z-index: 0;
+
+		@include mediaMaxWidth( md ){
+			top: rem(60);
+		}
+	}
+	&__content-wrap {
+		margin: rem(80) 0 0;
+		position: relative;
+		z-index: 1;
+
+		@include mediaMaxWidth( md ){
+			margin: rem(40) 0 0;
+		}
+		@include mediaMaxWidth( xs ){
+			margin: rem(30) 0 0;
+			order: 2;
+		}
+	}
+	&__heading {
+		font-size: clamp(2.25rem, 3.36vw, 3.375rem);
+		font-weight: 300;
+		margin: 0 0 rem(40);
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_h3;
+			margin: 0 0 rem(25);
+		}
+	}
+	&__footer {
+		border-top: 3px solid $plum;
+		margin: rem(65) 0 0;
+		padding: rem(15) 0 0;
+
+		@include mediaMaxWidth( md ){
+			margin: rem(60) 0 0;
+		}
+		@include mediaMaxWidth( xs ){
+			margin: rem(30) 0 0;
+		}
+	}
+	&__caption {
+		font-size: $fsize_medium;
+
+		@include mediaMaxWidth( md ){
+			font-size: $fsize_base;
+		}
+	}
+	&__media-wrap {
+		border-radius: $borderradius_large $borderradius_large 0 0;
+		line-height: 0;
+		margin: rem(-100) 0 0;
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+
+		@include mediaMaxWidth( md ){
+			border-radius: $borderradius_medium $borderradius_medium 0 0;
+			margin: rem(-50) 0 0;
+		}
+		@include mediaMaxWidth( xs ){
+			order: 1;
+		}
+
+		&::before {
+			content: '';
+			display: block;
+			min-height: rem(350);
+			padding-top: 142%;
+
+			@include mediaMaxWidth( xs ){
+				padding-top: 110%;
+				min-height: rem(300);
+			}
+		}
+	}
+	&__image {
+		display: block;
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		object-position: 50% 50%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	@include addColorVariations('&.has-background', '::before', 'background-color');
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {
+		&::before {
+			left: 50%;
+			transform: translateX(-50%);
+			width: 100vw;
+		}
+	}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+		&::before {
+			left: calc(#{$layout_padding} * -1);
+			right: calc(#{$layout_padding} * -1);
+		}
+		#{$b}__media-wrap {
+			&::before {
+				box-sizing: border-box;
+			}
+		}
+		#{$b}__image {
+			display: block;
+			height: 100%;
+		}
+	}
+}

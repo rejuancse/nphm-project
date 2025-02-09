@@ -1,0 +1,97 @@
+/**
+ * Header search
+ */
+
+ .site-header-search {
+	$c: &;
+
+	background: #B5DEF1;
+	left: 50%;
+	padding-bottom: rem(40);
+	padding-top: rem(24);
+	position: absolute;
+	top: 100%;
+	transform: translateX(-50%);
+	width: 100vw;
+	z-index: -1;
+
+	&__form {
+		display: flex;
+		flex-flow: row nowrap;
+		margin: 0 auto;
+		position: relative;
+		width: 100%;
+
+		&::before {
+			background-color: transparent;
+			background-image: url(../img/icons/icon-search--plum.svg);
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-size: rem(32) rem(32);
+			content: '';
+			bottom: 0;
+			display: block;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: rem(32);
+			z-index: 3;
+
+			@include mediaMaxWidth( md ){
+				background-size: rem(16) rem(16);
+				width: rem(16);
+			}
+		}
+	}
+	&__input {
+		border-bottom: 3px solid $plum;
+		font-size: $fsize_h4;
+		font-weight: 500;
+		padding-left: rem(56);
+		padding-right: rem(50);
+		width: 100%;
+
+		@include mediaMaxWidth( md ){
+			padding-left: rem(28);
+			padding-right: rem(40);
+		}
+	}
+	&__button {
+		background: $plum;
+		border: none;
+		border-radius: 0;
+		bottom: 0;
+		display: block;
+		font-size: 0;
+		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-width='1.5' d='M3 12.317h18M15 18.317l6-6-6-6'/%3E%3C/svg%3E");
+		mask-position: 100% 50%;
+		mask-repeat: no-repeat;
+		mask-size: rem(32) rem(32);
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		right: 0;
+		text-indent: -9999px;
+		top: 0;
+		transition: all .2s;
+		width: rem(50);
+
+		@include mediaMaxWidth( md ){
+			mask-size: rem(24) rem(24);
+			width: rem(40);
+		}
+
+		&:hover,
+		&:focus-visible {
+			background: $foreground;
+			mask-position: 50% 50%;
+		}
+		&:focus-visible {
+			box-shadow: $focus_default;
+		}
+	}
+
+	body:not(.is-search-active) & {
+		display: none;
+	}
+}

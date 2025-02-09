@@ -1,0 +1,50 @@
+/**
+ * Block / Events layout
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-events-layout {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 2);
+
+	.grid {
+		gap: calc(#{$layout_padding} * 2) calc(#{$layout_padding} * 2) !important;
+	}
+	&__sidebar {
+		@include mediaMaxWidth( sm ){
+			margin-bottom: calc(#{$layout_padding} * 2);
+		}
+
+		.calendar.is-type-mini {
+			margin-bottom: calc(#{$layout_padding} * 2);
+
+			@include mediaMaxWidth( sm ){
+				margin: 0 auto calc(#{$layout_padding} * 2);;
+			}
+		}
+		.feed-tags {
+			@include mediaMaxWidth( sm ){
+				justify-content: center;
+			}
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

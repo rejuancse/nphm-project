@@ -1,0 +1,92 @@
+/**
+ * Mixins
+ */
+ 
+/*** Media Queries ***/
+@mixin mediaMinWidth( $minWidth ){
+	@if type-of($minWidth)==string {
+		$minWidth: map-get($breakpoints, $minWidth);
+	}
+
+	@media screen and (min-width: #{$minWidth + 0px}){
+		@content;
+	}
+}
+@mixin mediaMaxWidth( $maxWidth ){
+	@if type-of($maxWidth)==string {
+		$maxWidth: map-get($breakpoints, $maxWidth) - 1;
+	}
+
+	@media screen and (max-width: #{$maxWidth + 0px}){
+		@content;
+	}
+}
+@mixin mediaBetween( $minWidth, $maxWidth ){
+	@if type-of($minWidth)==string {
+		$minWidth: map-get($breakpoints, $minWidth);
+	}
+	@if type-of($maxWidth)==string {
+		$maxWidth: map-get($breakpoints, $maxWidth) - 1;
+	}
+
+	@media screen and (min-width: #{$minWidth + 0px}) and (max-width: #{$maxWidth + 0px}){
+		@content;
+	}
+}
+
+
+/*** Get styles ***/
+@mixin getStyles( $styles, $screen:'' ){
+	@each $name, $value in $styles {
+		#{$name}: #{$value};
+	}
+}
+
+@mixin getStylesBreakpoints( $styles ){
+	@if type_of($styles)=='map' {
+		@each $itemScreen, $itemStyles in $styles {
+			@if $itemScreen=='xl' or $itemScreen=='lg' or $itemScreen=='md' or $itemScreen=='sm' or $itemScreen=='xs'{
+				@include mediaMaxWidth( $itemScreen ){
+					@include getStyles( $itemStyles, $itemScreen );
+				}
+			} @else if $itemScreen=='default' {
+				@include getStyles( $itemStyles, $itemScreen );
+			}
+		}
+	}
+}
+
+
+/*** Placeholder ***/
+@mixin placeholder {
+	&.placeholder { @content; }
+	&:-ms-input-placeholder { @content; }
+	&:-moz-placeholder { @content; }
+	&::-moz-placeholder { @content; }
+	&::-webkit-input-placeholder { @content; }
+}
+
+
+/*** Variations ***/
+@mixin addColorVariations( $className: '&.has-color-', $selector: '', $styleName: 'color' ){
+	#{$className}-foreground#{$selector}	{ #{$styleName}: $foreground; }
+	#{$className}-background#{$selector}	{ #{$styleName}: $background; }
+	#{$className}-red#{$selector}			{ #{$styleName}: $red; }
+	#{$className}-orange#{$selector}		{ #{$styleName}: $orange; }
+	#{$className}-coral#{$selector}			{ #{$styleName}: $coral; }
+	#{$className}-peach#{$selector}			{ #{$styleName}: $peach; }
+	#{$className}-brown#{$selector}			{ #{$styleName}: $brown; }
+	#{$className}-taupe#{$selector}			{ #{$styleName}: $taupe; }
+	#{$className}-beige#{$selector}			{ #{$styleName}: $beige; }
+	#{$className}-plum#{$selector}			{ #{$styleName}: $plum; }
+	#{$className}-pink#{$selector}			{ #{$styleName}: $pink; }
+	#{$className}-light-blue#{$selector}	{ #{$styleName}: $light_blue; }
+	#{$className}-turquoise#{$selector}		{ #{$styleName}: $turquoise; }
+	#{$className}-mint#{$selector}			{ #{$styleName}: $mint; }
+	#{$className}-lemon#{$selector}			{ #{$styleName}: $lemon; }
+	#{$className}-light-yellow#{$selector}	{ #{$styleName}: $light_yellow; }
+
+	#{$className}-dark-gray#{$selector}		{ #{$styleName}: $dark_gray; }
+	#{$className}-medium-gray#{$selector}	{ #{$styleName}: $medium_gray; }
+	#{$className}-light-gray#{$selector}	{ #{$styleName}: $light_gray; }
+}

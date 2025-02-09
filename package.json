@@ -1,0 +1,27 @@
+{
+	"name": "nphm-chicago",
+	"version": "2.0.0",
+	"description": "Custom theme by Dariia Lukiianchuk",
+	"main": "Gruntfile.js",
+	"browserslist": [
+		"last 5 versions",
+		"ie 9"
+	],
+	"dependencies": {
+		"@lodder/grunt-postcss":		"^3.0.0",
+		"autoprefixer":					"^10.4.17",
+		"grunt":						"^1.4.1",
+		"grunt-concurrent":				"~3.0.0",
+		"grunt-contrib-clean":			"~2.0.0",
+		"grunt-contrib-concat":			"~1.0.1",
+		"grunt-contrib-copy":			"~1.0.0",
+		"grunt-contrib-jshint":			"^3.2.0",
+		"grunt-contrib-sass":			"~2.0.0",
+		"grunt-contrib-uglify":			"~5.0.0",
+		"grunt-contrib-watch":			"^1.1.0",
+		"jshint":						"^2.12.0",
+		"load-grunt-tasks":				"~5.1.0",
+		"postcss-sort-media-queries":	"^5.2.0",
+		"sort-css-media-queries":		"~1.5.0"
+	}
+}

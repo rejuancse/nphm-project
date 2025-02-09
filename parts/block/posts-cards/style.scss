@@ -1,0 +1,45 @@
+/**
+ * Block / Posts cards
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-posts-cards {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 2);
+
+	&__item {
+		.event-card,
+		.exhibition-card,
+		.post-card,
+		.program-card {
+			height: 100%;
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {
+		&.grid {
+			gap: calc(#{$layout_padding} * 2) calc(#{$layout_padding} * 2);
+		}
+	}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+
+		&.grid {
+			gap: calc(#{$layout_padding} * 2) calc(#{$layout_padding} * 2);
+		}
+	}
+}

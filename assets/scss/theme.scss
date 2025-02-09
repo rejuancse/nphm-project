@@ -1,0 +1,56 @@
+/*** Base styling ***/
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+@import 'base/normalize';
+@import 'base/grid';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/buttons';
+@import 'base/wp-blocks';
+
+
+/*** Vendor styling ***/
+@import 'vendor/splide/splide-core';
+
+
+/*** Components styling ***/
+@import 'components/breadcrumbs';
+@import 'components/calendar';
+@import 'components/feed-categories';
+@import 'components/feed-tags';
+@import 'components/forms';
+@import 'components/navigation';
+@import 'components/pagination';
+@import 'components/social-networks-menu';
+@import 'components/splide';
+
+
+/*** Layout ***/
+@import 'layout/header';
+@import 'layout/header-search';
+@import 'layout/footer';
+
+// Content
+@import 'layout/content/bio-card';
+@import 'layout/content/event-card';
+@import 'layout/content/event-image-card';
+@import 'layout/content/event-list-item';
+@import 'layout/content/exhibition-card';
+@import 'layout/content/featured-slide';
+@import 'layout/content/highlight-card';
+@import 'layout/content/post-card';
+@import 'layout/content/program-card';
+@import 'layout/content/search-card';
+
+// Section
+@import 'layout/section/hero';
+@import 'layout/section/subheader';
+
+// Templates
+@import 'layout/templates/404';
+@import 'layout/templates/archive';
+@import 'layout/templates/aviary-cpt';
+@import 'layout/templates/page';
+@import 'layout/templates/search-results';

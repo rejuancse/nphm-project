@@ -1,0 +1,121 @@
+/**
+ * Block / Featured slider
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-featured-slider {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 3);
+	position: relative;
+
+	.splide__arrows {
+		justify-content: space-between;
+		left: 0;
+		padding: 0 rem(50);
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 3;
+
+		@include mediaBetween( lg,xl ){
+			padding: 0 calc(#{$layout_padding} * 2 - #{rem(8)});
+		}
+		@include mediaBetween( md,lg ){
+			padding: 0 calc(#{$layout_padding} - #{rem(6)});
+		}
+		@include mediaMaxWidth( md ){
+			padding: 0 calc(#{$layout_padding} * 2 - #{rem(4)});
+		}
+	}
+	.splide__arrow {
+		height: rem(90);
+		mask-size: rem(86) rem(86);
+		opacity: 0.6;
+		transition: opacity .2s;
+		width: rem(90);
+
+		@include mediaBetween( lg,xl ){
+			height: rem(76);
+			mask-size: rem(72) rem(72);
+			width: rem(76);
+		}
+		@include mediaBetween( md,lg ){
+			mask-size: rem(56) rem(56);
+			height: rem(60);
+			width: rem(60);
+		}
+		@include mediaMaxWidth( md ){
+			mask-size: rem(46) rem(46);
+			height: rem(50);
+			width: rem(50);
+		}
+
+		&:hover,
+		&:focus {
+			@include mediaMinWidth( $mobileBreakpoint ){
+				opacity: 1;
+			}
+		}
+
+		&:disabled {
+			opacity: .5;
+		}
+	}
+	.splide__pagination {
+		bottom: calc(#{$layout_padding} + #{rem(60)});
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: calc(100% - #{rem(60)} * 2);
+		z-index: 3;
+
+		@include mediaBetween( lg,xl ){
+			bottom: calc(#{$layout_padding} * 3);
+			right: calc(#{$layout_padding} * 4);
+			width: calc(100% - #{$layout_padding} *2 *2);
+		}
+		@include mediaBetween( md,lg ){
+			bottom: calc(#{$layout_padding} * 2);
+			right: calc(#{$layout_padding} * 3);
+			width: calc(100% - #{$layout_padding} *2);
+		}
+		@include mediaMaxWidth( md ){
+			bottom: calc(#{$layout_padding} * 3);
+			right: calc(#{$layout_padding} * 4);
+			width: calc(100% - #{$layout_padding} *2 *2);
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+		#{$b}__track {
+			overflow: hidden;
+		}
+		#{$b}__list {
+			display: flex;
+			flex-flow: row nowrap;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		#{$b}__slide {
+			flex: 0 0 100%;
+			max-width: 100%;
+		}
+	}
+}

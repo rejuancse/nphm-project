@@ -1,0 +1,45 @@
+/**
+ * Feed tags
+ */
+
+.feed-tags {
+	$c: &;
+
+	display: flex;
+	flex-flow: row wrap;
+	gap: $layout_padding;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&__item {
+		&.is-active {
+			.feed-tags__link {
+				background-color: $plum;
+				color: $background;
+			}
+		}
+	}
+	&__link {
+		border-radius: $borderradius_large;
+		border-color: $plum;
+		border-style: solid;
+		border-width: 2px;
+		color: $plum;
+		display: inline-block;
+		font-size: $fsize_medium;
+		font-weight: 400;
+		line-height: $lineheight_default;
+		padding: 0.3125rem 1.5rem;
+		text-decoration: none;
+
+
+		&:hover,
+		&:focus {
+			@include mediaMinWidth( $mobileBreakpoint ){
+				background: $plum !important;
+				color: $background;
+			}
+		}
+	}
+}

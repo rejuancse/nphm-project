@@ -1,0 +1,116 @@
+/**
+ * Block / Contact information
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-contact-info {
+	$b: &;
+
+	gap: calc(#{$layout_padding} * 2) calc(#{$layout_padding} * 2) !important;
+	margin: 0 0 calc(#{$layout_padding} * 2);
+	min-height: 23rem;
+
+	@include mediaBetween( xs,md ){
+		min-height: 15rem;
+	}
+	@include mediaMaxWidth( xs ){
+		min-height: 0;
+	}
+
+	&__heading {
+		font-size: $fsize_h4;
+		font-weight: 500;
+		margin: 0 0 rem(40);
+		text-align: center;
+
+		@include mediaMaxWidth( md ){
+			margin: 0 0 rem(20);
+		}
+	}
+	&__form {
+		max-width: rem(420);
+	}
+	&__link-wrap {
+		align-items: center;
+		background: $orange;
+		color: $background;
+		display: flex;
+		flex-flow: column nowrap;
+		font-size: $fsize_h5;
+		height: 100%;
+		justify-content: center;
+		min-height: inherit;
+		padding: calc(#{$layout_padding} * 2);
+
+		@include mediaMaxWidth( xs ){
+			height: auto;
+		}
+	}
+	&__link {
+		text-decoration: none;
+
+		&::after {
+			background: currentColor;
+			content: '';
+			display: inline-block;
+			height: calc(#{$fsize_h5} * #{$lineheight_default});
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-width='1.5' d='M3 12.317h18M15 18.317l6-6-6-6'/%3E%3C/svg%3E");
+			mask-position: 100% 100%;
+			mask-repeat: no-repeat;
+			mask-size: #{$fsize_h5} #{$fsize_h5};
+			vertical-align: bottom;
+			width: calc(#{$fsize_h5} * #{$lineheight_default});
+		}
+
+		&:hover,
+		&:focus {
+			@include mediaMinWidth( xs ){
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&:not(.is-type-form),
+	&.is-type-text {
+		#{$b}__form-wrap {
+			padding: 0;
+
+			@include mediaMaxWidth( xs ){
+				padding: calc(#{$layout_padding} * 2) 0;
+			}
+		}
+	}
+	&.is-type-form {
+		#{$b}__form-wrap {
+			align-items: center;
+			display: flex;
+			flex-flow: column nowrap;
+			height: 100%;
+			justify-content: center;
+			padding: calc(#{$layout_padding} * 2);
+
+			@include mediaMaxWidth( xs ){
+				height: auto;
+				padding: calc(#{$layout_padding} * 2) 0;
+			}
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

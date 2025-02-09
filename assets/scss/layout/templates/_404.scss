@@ -1,0 +1,37 @@
+/**
+ * Template / 404
+ */
+
+ .page-404 {
+    margin-bottom: 60px;
+    margin-top: 75px;
+
+    @include mediaBetween(xs,md){
+        margin-bottom: 40px;
+        margin-top: 40px;
+    }
+    @include mediaMaxWidth(xs){
+        margin-top: 35px;
+        margin-bottom: 25px;
+    }
+
+    &__header {
+        margin: 0 0 40px;
+    }
+    &__title {
+        margin: 0;
+        text-align: center;
+
+        &::after {
+            border-bottom: 2px solid $dark_gray;
+            content: '';
+            display: block;
+            margin: 14px auto 0;
+            max-width: 180px;
+            width: 100%;
+        }
+    }
+    &__content {
+        text-align: center;
+    }
+}

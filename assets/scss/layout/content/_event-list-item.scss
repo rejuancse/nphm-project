@@ -1,0 +1,94 @@
+/**
+ * Content / Event list item
+ */
+
+.event-list-item {
+	$c: &;
+
+	border-top: 3px solid $plum;
+	padding: rem(35) 0 0;
+
+	&__heading {
+		margin: 0 0 rem(10);
+	}
+	&__time {
+		font-size: $fsize_h5;
+		line-height: $lineheight_default;
+	}
+	&__footer {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		gap: $layout_padding calc(#{$layout_padding} * 2);
+		grid-area: footer;
+		justify-content: space-between;
+		margin-top: rem(30);
+
+		@include mediaMaxWidth( xs ){
+			display: block;
+		}
+	}
+	&__terms,
+	&__details {
+		flex: 1 0 auto;
+		max-width: 100%;
+	}
+	&__terms {
+		display: flex;
+		flex-flow: row wrap;
+		gap: $layout_padding $layout_padding;
+	}
+	&__term-link {
+		font-size: $fsize_medium;
+
+		@include mediaMaxWidth( xs ){
+			padding-left: 1rem !important;
+			padding-right: 1rem !important;
+		}
+	}
+	&__details {
+		align-items: center;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-end;
+		margin-left: auto;
+		text-align: right;
+
+		@include mediaMaxWidth( xs ){
+			display: block;
+			margin-top: rem(10);
+			text-align: initial;
+		}
+
+		time,
+		address {
+			display: inline-block;
+			font-size: $fsize_medium;
+			font-style: normal;
+			font-weight: 400;
+			margin: 0;
+			
+			@include mediaMaxWidth( xs ){
+				display: block;
+			}
+
+			&:not(:first-child) {
+				margin-left: rem(10);
+
+				@include mediaMaxWidth( xs ){
+					margin-left: 0;
+				}
+
+				&::before {
+					content: '|';
+					margin-right: rem(10);
+
+					@include mediaMaxWidth( xs ){
+						content: none;
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

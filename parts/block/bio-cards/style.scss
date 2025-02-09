@@ -1,0 +1,45 @@
+/**
+ * Block / Bio cards
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-bio-cards {
+	$b: &;
+
+	gap: calc(#{$layout_padding} * 2 + #{rem(5)}) calc(#{$layout_padding} * 2) !important;
+	list-style: none;
+	margin: 0 0 calc(#{$layout_padding} * 2);
+	padding: 0;
+
+	&__item {
+		.bio-card {
+			height: 100%;
+		}
+	}
+
+	&.grid--xs-2 {
+		@include mediaMaxWidth(350){
+			.col {
+				flex: 0 0 100%;
+				max-width: 100%;
+			}
+		}
+	}
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+	
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

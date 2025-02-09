@@ -1,0 +1,43 @@
+/**
+ * Block / Header
+ */
+
+@import '../../../assets/scss/abstracts/functions';
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+.block-header {
+	$b: &;
+
+	margin: 0 0 calc(#{$layout_padding} * 2);
+
+	&__heading {
+		font-size: $fsize_h4 !important;
+		margin: 0;
+	}
+	&__link-wrap {
+		margin-top: rem(9);
+
+		@include mediaMinWidth( sm ){
+			text-align: right;
+		}
+		@include mediaMaxWidth( sm ){
+			margin-top: $layout_padding;
+		}
+	}
+
+	&:first-child {
+		margin-top: 0 !important;
+	}
+	&:last-child {
+		margin-bottom: 0 !important;
+	}
+
+	body:not(.wp-admin) & {}
+	.wp-block & {
+		* {
+			box-sizing: border-box;
+		}
+	}
+}

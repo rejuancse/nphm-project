@@ -1,0 +1,86 @@
+/**
+ * Vendor: Splide
+ */
+
+.splide {
+	&__arrows {
+		display: flex;
+		flex-flow: row nowrap;
+		gap: rem(8);
+	}
+	&__arrow {
+		background: $foreground;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		font-size: 0;
+		height: rem(30);
+		mask-position: 50% 50%;
+		mask-repeat: no-repeat;
+		mask-size: rem(24) rem(24);
+		overflow: hidden;
+		padding: 0;
+		text-indent: -9999px;
+		width: rem(30);
+
+		&--prev {
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-width='1.5' d='M21 12.317H3M9 6.317l-6 6 6 6'/%3E%3C/svg%3E");
+		}
+		&--next {
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' fill='none'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-width='1.5' d='M3 12.317h18M15 18.317l6-6-6-6'/%3E%3C/svg%3E");
+		}
+	}
+	&__pagination {
+		gap: 0.5rem;
+		margin: $layout_padding 0 0;
+		padding: 0;
+
+		li {
+			display: block;
+			line-height: 0;
+		}
+		&__page {
+			background: $foreground;
+			border: none;
+			border-radius: rem(16);
+			box-shadow: none;
+			height: rem(16);
+			opacity: 0.5;
+			padding: 0;
+			transition: opacity .2s;
+			width: rem(16);
+
+			&.is-active {
+				background: $orange;
+				height: rem(22);
+				opacity: 1;
+				width: rem(22);
+			}
+
+			&:hover,
+			&:focus {
+				@include mediaMinWidth( $mobileBreakpoint ){
+					opacity: 1;
+				}
+			}
+		}
+	}
+	&__progress {
+		background: rgba(#596160, .4);
+		border-radius: rem(4);
+		height: rem(8);
+		display: block;
+		margin: rem(30) 0 0;
+
+		@include mediaMaxWidth( md ){
+			margin: rem(20) 0 0;
+		}
+
+		&-bar {
+			background: #596160;
+			border-radius: inherit;
+			height: inherit;
+			display: block;
+		}
+	}
+}
